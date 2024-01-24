@@ -15,7 +15,20 @@ router.get('/', (req, res) => {
 })
 
 router.post('/save', async (req, res) => {
+    let fullDateOrder = new Date()
+    fullDateOrder.setTime(fullDateOrder.getTime() + 7 * 60 * 60 * 1000)
+    let dateOrder = fullDateOrder.getDate()
+    let monthOrder = fullDateOrder.getMonth() + 1
+
+    if (dateOrder < 10) {
+        dateOrder = "0" + dateOrder
+    }
+    if (monthOrder < 10) {
+        monthOrder = "0" + monthOrder
+    }
     const order = new Model({
+        sortFodder: fullDateOrder.getTime(),
+        date: dateOrder + "/" + monthOrder + "/" + fullDateOrder.getFullYear(),
         name: req.body.name,
         phone: req.body.phone,
         email: req.body.email,

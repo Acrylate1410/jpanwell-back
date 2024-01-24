@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
 const dataSchema = new mongoose.Schema({
+    sortFodder: {
+        required: true,
+        type: Number
+    },
     name: {
         required: true,
         type: String
@@ -14,6 +18,10 @@ const dataSchema = new mongoose.Schema({
         type: String
     },
     message: {
+        required: true,
+        type: String
+    },
+    date: {
         required: true,
         type: String
     },
